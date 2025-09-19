@@ -1,5 +1,4 @@
-#2 Human Players
-# Board printed out each time (Matrix 1-9). 0 or X
+#1 We need to print board after each input.
 #   ---+---+---
 #    1 | 2 | 3
 #   ---+---+---
@@ -7,11 +6,10 @@
 #   ---+---+---
 #    7 | 8 | 9
 #   ---+---+---
-#STEP 1 PLAYER 1 PICK 0 OR X
-#STEP 2 ENTER (1-9) ON A MATRIX OF OPTIONS
-#STEP 3 SWITCH PLAYER 7 REPEAT PROCESS
-#STEP 4 AFTER 3 ENTRIES FROM PLAYER 1 CHECK HORIZONTAL, VERTICAL AND DIAGONAL TO SEE IF PLAYER HAS WON.
-#STEP5 PLAYER WINS OR DRAWS. END GAME.
+#2 Take in player input (1-9).
+#3 Switch players and place their inputs on the board.
+#4 Check if the game is won (player_1 or player_2), tied or ongoing by checking horizontal,vertical and diagonal winning patterns.
+#5 Repeat 3 and 4 until the game has been won or tied. End game.
 
 def init():
     choice = ""
