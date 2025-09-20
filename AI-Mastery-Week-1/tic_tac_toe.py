@@ -27,12 +27,12 @@ test_board = [None, '1', '2', '3', '4', '5', '6', '7', '8', '9']
 # def win(game):
     
 # def draw(game):
-
+  
 
 def main():
+    
     choice = ""
     print("This is Tic-Tac-Toe")
-
 
     while choice != "O" and choice != "X":
         choice = input("Player 1, Choose either O or X:\n")
@@ -50,27 +50,41 @@ def main():
             print("Player 1 is: X\nPlayer 2 is: O")
     
     display(board= test_board)
-        
+
+
     while True:
-        
-        placement = int(input("\nPlayer 1, Choose a position from 1-9 to place your marker: "))
-        
-        if placement in range(1, 10):
-            test_board[placement] = player_1
+        try:
+            placement = int(input("\nPlayer 1, Choose a position from 1-9 to place your marker: "))
+            
+            if test_board[placement] == player_1 or test_board[placement] == player_2:
+                print("You cannot place your marker on that position.")
+                display(board= test_board)
+                continue
+            
+            if placement not in range(1, 10):
+                print("You did not choose a position from (1-9)")
+                continue
 
-        display(board= test_board)
+            if placement in range(1, 10):
+                test_board[placement] = player_1
 
-        placement = int(input("\nPlayer 2, Choose a position from 1-9 to place your marker: "))
+            display(board= test_board)
+            try:
+                placement = int(input("\nPlayer 2, Choose a position from 1-9 to place your marker: "))
 
-        if placement in range(1, 10):
-            test_board[placement] = player_2
+                if placement not in range(1, 10):
+                    print("You did not choose a position from (1-9)")
+                    continue
 
-        display(board= test_board)
+                if placement in range(1, 10):
+                    test_board[placement] = player_2
+
+                display(board= test_board)
+            
+            except ValueError: print("You did not choose a position from (1-9)")
+
+        except ValueError: print("You did not choose a position from (1-9)")
     
-    while placement not in range(1, 10):
-        placement = int(input("\nPlayer 1, Choose a position from 1-9 to place your marker: "))
-        if placement not in range(1, 10):
-            print("You did not choose a position from (1-9)")
     
 main()
 display(board= test_board)
