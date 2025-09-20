@@ -47,24 +47,16 @@ def get_valid_position(player_name, board):
 def check_winner(board):
     """Checks for diagonal,horizonatal and vertical wins and draws"""
         # Rows(positions 1-2-3, 4-5-6, 7-8-9)
-    if board[1] == board[2] == board[3] and board[1] in ['X', 'O']:
-        return board[1]
-    if board[4] == board[5] == board[6] and board[4] in ['X', 'O']:
-        return board[1]
-    if board[7] == board[8] == board[9] and board[7] in ['X', 'O']:
-        return board[1]
-    # Columns?(positions 1-4-7, 2-5-8, 3-6-9)
-    if board[1] == board[4] == board[7] and board[1] in ['X', 'O']:
-        return board[1]
-    if board[2] == board[5] == board[8] and board[2] in ['X', 'O']:
-        return board[1]
-    if board[3] == board[6] == board[9] and board[3] in ['X', 'O']:
-        return board[1]
-    # Diagonals?(positions 1-5-9, 3-5-7)
-    if board[1] == board[5] == board[9] and board[1] in ['X', 'O']:
-        return board[1]
-    if board[3] == board[5] == board[7] and board[3] in ['X', 'O']:
-        return board[1]
+    winning_combos = [
+    [1, 2, 3], [4, 5, 6], [7, 8, 9],  # Rows
+    [1, 4, 7], [2, 5, 8], [3, 6, 9],  # Columns  
+    [1, 5, 9], [3, 5, 7]              # Diagonals
+    ]
+    
+    for combo in winning_combos:
+        if board[combo[0]] == board[combo[1]] == board[combo[2]] and board[combo[0]] in ['X', 'O']:
+            return board[combo[0]]
+    
     return None
     
 
