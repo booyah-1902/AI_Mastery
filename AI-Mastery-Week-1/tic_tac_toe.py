@@ -49,11 +49,24 @@ def check_winner(board):
         # Rows(positions 1-2-3, 4-5-6, 7-8-9)
     if board[1] == board[2] == board[3] and board[1] in ['X', 'O']:
         return board[1]
-    
-    return None
+    if board[4] == board[5] == board[6] and board[4] in ['X', 'O']:
+        return board[1]
+    if board[7] == board[8] == board[9] and board[7] in ['X', 'O']:
+        return board[1]
     # Columns?(positions 1-4-7, 2-5-8, 3-6-9)
+    if board[1] == board[4] == board[7] and board[1] in ['X', 'O']:
+        return board[1]
+    if board[2] == board[5] == board[8] and board[2] in ['X', 'O']:
+        return board[1]
+    if board[3] == board[6] == board[9] and board[3] in ['X', 'O']:
+        return board[1]
     # Diagonals?(positions 1-5-9, 3-5-7)
-    #8 ways to win
+    if board[1] == board[5] == board[9] and board[1] in ['X', 'O']:
+        return board[1]
+    if board[3] == board[5] == board[7] and board[3] in ['X', 'O']:
+        return board[1]
+    return None
+    
 
 def init():
     """Get player symbol choices (X or O)"""
@@ -86,16 +99,19 @@ def main():
         position = get_valid_position("Player 1", board)
         board[position] = player_1
         display_board(board)
-        
-        # Check top row win
-        check_winner(board)
+        winner = check_winner(board)
+        if winner:
+            print(f"Player {winner} wins!")
+            break
         
         # Player 2's turn  
         position = get_valid_position("Player 2", board)
         board[position] = player_2
         display_board(board)
-        
-        # Check top row win
+        winner = check_winner(board)
+        if winner:
+            print(f"Player {winner} wins!")
+            break
         check_winner(board)
 
 
