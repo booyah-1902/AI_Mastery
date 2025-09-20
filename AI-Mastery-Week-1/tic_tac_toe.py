@@ -105,7 +105,7 @@ def main():
         draw = check_draw(board)
         if draw:
             print("It's a draw!")
-        
+            break
         # Player 2's turn  
         position = get_valid_position("Player 2", board)
         board[position] = player_2
