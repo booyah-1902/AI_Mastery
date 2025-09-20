@@ -1,16 +1,3 @@
-#1 We need to print board after each input. DONE
-#   ---+---+---
-#    1 | 2 | 3
-#   ---+---+---
-#    4 | 5 | 6
-#   ---+---+---
-#    7 | 8 | 9
-#   ---+---+---
-#2 Take in player input (1-9). DONE
-#3 Switch players and place their inputs on the board. DONE
-#4 Check if the game is won (player_1 or player_2), tied or ongoing by checking horizontal,vertical and diagonal winning patterns. DONE
-#5 Repeat 3 and 4 until the game has been won or tied. End game. DONE
-
 def display_board(board):
     """Display the tic-tac-toe board"""
     print("\n ---+---+---")
