@@ -45,7 +45,7 @@ def get_valid_position(player_name, board):
             print("Enter a number from 1-9")
 
 def check_winner(board):
-    """Checks for diagonal,horizonatal and vertical wins and draws"""
+    """Checks for diagonal,horizonatal and vertical wins"""
         # Rows(positions 1-2-3, 4-5-6, 7-8-9)
     winning_combos = [
     [1, 2, 3], [4, 5, 6], [7, 8, 9],  # Rows
@@ -56,8 +56,11 @@ def check_winner(board):
     for combo in winning_combos:
         if board[combo[0]] == board[combo[1]] == board[combo[2]] and board[combo[0]] in ['X', 'O']:
             return board[combo[0]]
-    
+
     return None
+
+def check_draw(board):
+    """Checks for draw"""
     
 
 def init():
@@ -104,7 +107,6 @@ def main():
         if winner:
             print(f"Player {winner} wins!")
             break
-        check_winner(board)
 
 
 # Run the game
