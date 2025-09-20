@@ -8,8 +8,8 @@
 #   ---+---+---
 #2 Take in player input (1-9). DONE
 #3 Switch players and place their inputs on the board. DONE
-#4 Check if the game is won (player_1 or player_2), tied or ongoing by checking horizontal,vertical and diagonal winning patterns.
-#5 Repeat 3 and 4 until the game has been won or tied. End game.
+#4 Check if the game is won (player_1 or player_2), tied or ongoing by checking horizontal,vertical and diagonal winning patterns. DONE
+#5 Repeat 3 and 4 until the game has been won or tied. End game. DONE
 
 def display_board(board):
     """Display the tic-tac-toe board"""
@@ -61,7 +61,11 @@ def check_winner(board):
 
 def check_draw(board):
     """Checks for draw"""
-    
+    for i in range(1,10):
+        if board[i] not in ['X', 'O']:
+            return False
+    return True
+
 
 def init():
     """Get player symbol choices (X or O)"""
@@ -96,8 +100,11 @@ def main():
         display_board(board)
         winner = check_winner(board)
         if winner:
-            print(f"Player {winner} wins!")
+            print(f"{winner} wins!")
             break
+        draw = check_draw(board)
+        if draw:
+            print("It's a draw!")
         
         # Player 2's turn  
         position = get_valid_position("Player 2", board)
@@ -105,7 +112,11 @@ def main():
         display_board(board)
         winner = check_winner(board)
         if winner:
-            print(f"Player {winner} wins!")
+            print(f"{winner} wins!")
+            break
+        draw = check_draw(board)
+        if draw:
+            print("It's a draw!")
             break
 
 
