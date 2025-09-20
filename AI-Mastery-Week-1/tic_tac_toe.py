@@ -48,20 +48,29 @@ def main():
         else:
             player_2 = "O"
             print("Player 1 is: X\nPlayer 2 is: O")
-
-    placement = int(input("\nPlayer 1, Choose a position from 1-9 to place your marker: "))
     
-    #2 Take in player input (1-9).
+    display(board= test_board)
+        
+    while True:
+        
+        placement = int(input("\nPlayer 1, Choose a position from 1-9 to place your marker: "))
+        
+        if placement in range(1, 10):
+            test_board[placement] = player_1
 
+        display(board= test_board)
+
+        placement = int(input("\nPlayer 2, Choose a position from 1-9 to place your marker: "))
+
+        if placement in range(1, 10):
+            test_board[placement] = player_2
+
+        display(board= test_board)
+    
     while placement not in range(1, 10):
         placement = int(input("\nPlayer 1, Choose a position from 1-9 to place your marker: "))
         if placement not in range(1, 10):
             print("You did not choose a position from (1-9)")
-
-    while placement in range(1, 10):
-        if placement in range(1, 10):
-            test_board[placement] = player_1
-            
     
 main()
 display(board= test_board)
