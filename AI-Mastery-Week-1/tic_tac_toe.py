@@ -1,4 +1,4 @@
-#1 We need to print board after each input.
+#1 We need to print board after each input. DONE
 #   ---+---+---
 #    1 | 2 | 3
 #   ---+---+---
@@ -6,8 +6,8 @@
 #   ---+---+---
 #    7 | 8 | 9
 #   ---+---+---
-#2 Take in player input (1-9).
-#3 Switch players and place their inputs on the board.
+#2 Take in player input (1-9). DONE
+#3 Switch players and place their inputs on the board. DONE
 #4 Check if the game is won (player_1 or player_2), tied or ongoing by checking horizontal,vertical and diagonal winning patterns.
 #5 Repeat 3 and 4 until the game has been won or tied. End game.
 
@@ -30,7 +30,7 @@ def get_valid_position(player_name, board):
             
             # Check if number is in valid range
             if position not in range(1, 10):
-                print("Please choose a number between 1 and 9")
+                print("Choose a position from 1-9")
                 continue
             
             # Check if position is already taken
@@ -42,15 +42,25 @@ def get_valid_position(player_name, board):
             return position
             
         except ValueError:
-            print("Please enter a number")
+            print("Enter a number from 1-9")
 
+def check_winner(board):
+    """Checks for diagonal,horizonatal and vertical wins and draws"""
+        # Rows(positions 1-2-3, 4-5-6, 7-8-9)
+    if board[1] == board[2] == board[3] and board[1] in ['X', 'O']:
+        return board[1]
+    
+    return None
+    # Columns?(positions 1-4-7, 2-5-8, 3-6-9)
+    # Diagonals?(positions 1-5-9, 3-5-7)
+    #8 ways to win
 
-def get_player_symbols():
+def init():
     """Get player symbol choices (X or O)"""
     print("This is Tic-Tac-Toe")
     
     while True:
-        choice = input("Player 1, choose either O or X: ").upper()
+        choice = input("Player 1, choose either O or X:\n").upper()
         if choice in ['O', 'X']:
             player_1 = choice
             player_2 = 'X' if choice == 'O' else 'O'
@@ -58,15 +68,14 @@ def get_player_symbols():
             print(f"Player 2 is: {player_2}")
             return player_1, player_2
         else:
-            print("Please choose either O or X")
-
+            print("Choose either O or X")
 
 def main():
     # Initialize the board
     board = [None, '1', '2', '3', '4', '5', '6', '7', '8', '9']
     
     # Get player symbols
-    player_1, player_2 = get_player_symbols()
+    player_1, player_2 = init()
     
     # Show initial board
     display_board(board)
@@ -78,14 +87,16 @@ def main():
         board[position] = player_1
         display_board(board)
         
-        # TODO: Check for win or draw here
+        # Check top row win
+        check_winner(board)
         
         # Player 2's turn  
         position = get_valid_position("Player 2", board)
         board[position] = player_2
         display_board(board)
         
-        # TODO: Check for win or draw here
+        # Check top row win
+        check_winner(board)
 
 
 # Run the game
