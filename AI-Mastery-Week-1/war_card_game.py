@@ -1,21 +1,30 @@
 import random
 
-suit = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-rank = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-value = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 
+suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
+ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 
             'Nine':9, 'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':14}
 
 class Card:
 
-    def __init__ (self, suit, rank):
-        self.suit = suit
-        self.rank = rank
-        self.value = value[rank]
+    def __init__ (self, suits, ranks):
+        self.suits = suits
+        self.ranks = ranks
+        self.values = values[ranks]
     
     def __str__ (self):
-        return (f"{self.rank} of {self.suit}")
+        return (f"{self.ranks} of {self.suits}")
 
 class Deck:
 
     def __init__ (self):
-        pass
+
+        self.all_cards = []
+
+        for suit in suits:
+            for rank in ranks:
+                created_card = Card(suit,rank)
+                self.all_cards.append(created_card)
+        
+    def shuffle(self):
+        
