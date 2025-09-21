@@ -42,7 +42,7 @@ class Player:
         self.all_cards = []
 
     def remove_one(self):
-        self.all_cards.pop(0)
+        return self.all_cards.pop(0)  # Added return statement
 
     def add_cards(self, new_cards):
         if type(new_cards) == type([]):
@@ -83,5 +83,47 @@ def main():
 
         player_one_cards = []
         player_one_cards.append(player_one.remove_one())
+
         player_two_cards = []
         player_two_cards.append(player_two.remove_one())
+
+        at_war = True
+
+        while at_war:
+
+            if player_one_cards[-1].values > player_two_cards[-1].values:  # Changed .value to .values
+
+                player_one.add_cards(player_one_cards)
+                player_one.add_cards(player_two_cards)
+                
+                at_war = False
+            
+            elif player_one_cards[-1].values < player_two_cards[-1].values:  # Changed .value to .values
+
+                player_two.add_cards(player_one_cards)
+                player_two.add_cards(player_two_cards)
+                
+                at_war = False
+
+            else:
+                print('WAR!')
+
+                if len(player_one.all_cards) < 5:
+                    print("Player One unable to play war! Game Over at War")
+                    print("Player Two Wins! Player One Loses!")
+                    game_on = False
+                    break
+
+                elif len(player_two.all_cards) < 5:
+                    print("Player Two unable to play war! Game Over at War")
+                    print("Player One Wins! Player Two Loses!")  # Fixed typo
+                    game_on = False
+                    break
+
+                else:
+                    for num in range(5):
+                        player_one_cards.append(player_one.remove_one())
+                        player_two_cards.append(player_two.remove_one())
+    
+if __name__ == "__main__":
+    main()
