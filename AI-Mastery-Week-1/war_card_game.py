@@ -91,14 +91,14 @@ def main():
 
         while at_war:
 
-            if player_one_cards[-1].values > player_two_cards[-1].values:  # Changed .value to .values
+            if player_one_cards[-1].values > player_two_cards[-1].values:
 
                 player_one.add_cards(player_one_cards)
                 player_one.add_cards(player_two_cards)
                 
                 at_war = False
             
-            elif player_one_cards[-1].values < player_two_cards[-1].values:  # Changed .value to .values
+            elif player_one_cards[-1].values < player_two_cards[-1].values:
 
                 player_two.add_cards(player_one_cards)
                 player_two.add_cards(player_two_cards)
@@ -116,7 +116,7 @@ def main():
 
                 elif len(player_two.all_cards) < 5:
                     print("Player Two unable to play war! Game Over at War")
-                    print("Player One Wins! Player Two Loses!")  # Fixed typo
+                    print("Player One Wins! Player Two Loses!")
                     game_on = False
                     break
 
