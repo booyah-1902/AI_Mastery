@@ -1,0 +1,36 @@
+
+TITANIC DATA ANALYSIS RESULTS
+=============================
+
+Total passengers: 891
+Overall survival rate: 38.4%
+
+--- Survival by Gender ---
+Male survival rate: 18.9%
+Female survival rate: 74.2%
+
+--- Survival by Class ---
+1st Class: 63.0%
+2nd Class: 47.3%
+3rd Class: 24.2%
+
+--- Age Stats ---
+Average Age: 29.7
+Median Age: 28.0
+Youngest Passenger: 0.42
+Oldest Passenger: 80.0
+
+--- Fare Analysis ---
+Average Fare: £32.20
+Highest Fare: £512.33
+Average Fare of Survivors: £48.40
+Average Fare of Non-Survivors: £22.12
+
+--- Family Size Impact ---
+Solo travelers survival: 30.4%
+Passengers with family survival: 50.6%
+
+--- Embarkation Port ---
+C: 168 passengers, survival 55.4%
+Q: 77 passengers, survival 39.0%
+S: 644 passengers, survival 33.7%
